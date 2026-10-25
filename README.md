@@ -26,7 +26,7 @@ La lógica del negocio se encuentra distribuida estratégicamente en los siguien
 * `main.py`: Orquestador central del menú de opciones y ciclo de vida de la app.
 * `datos.py`: Gestión de operaciones de lectura/escritura (I/O) en `paises.csv` y renderizado de tablas.
 * `validaciones.py`: Controladores de mutación segura de datos (Altas y Actualizaciones).
-* `busquedas.py`: Algoritmos de exploración y coincidencia parcial por nombre.
+* `busqueda.py`: Algoritmos de exploración y coincidencia parcial por nombre.
 * `filtros.py`: Rutinas de extracción sectorizada por continente y rangos cuantitativos.
 * `ordenamiento.py`: Clasificación posicional (Ascendente / Descendente) mediante claves lambda.
 * `estadisticas.py`: Análisis matemático y cálculo de métricas agregadas del dataset.
@@ -37,7 +37,7 @@ La lógica del negocio se encuentra distribuida estratégicamente en los siguien
 
 ### Requisitos Previos
 * Tener instalado **Python 3.10** o superior.
-* Disponer del archivo de datos `paises.csv` dentro de la carpeta raíz o la carpeta `src/`.
+* Disponer del archivo `data/paises.csv` incluido en el repositorio.
 
 ### Ejecución del Sistema
 Para garantizar que Python reconozca el paquete modular de manera interna sin conflictos de importación circular, la aplicación debe ejecutarse desde la **carpeta raíz del proyecto** abriendo una terminal y corriendo el siguiente comando:
