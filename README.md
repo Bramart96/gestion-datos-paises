@@ -1,64 +1,46 @@
-# Gestión de Datos de Países en Python
+# Gestión y análisis de países | Python
 
-Este proyecto es el **Trabajo Práctico Integrador (TPI)** para la materia **Programación 1** de la *Tecnicatura Universitaria en Programación a Distancia (UTN)*. Consiste en una aplicación de consola desarrollada en Python 3.x que permite administrar, filtrar, ordenar y calcular estadísticas sobre un dataset de países almacenado en formato CSV.
+Desarrollé una aplicación de consola para administrar un conjunto de países almacenado en CSV. Organicé las operaciones en módulos específicos para facilitar la lectura, las validaciones y la persistencia de datos.
 
----
+## Funcionalidades implementadas
 
-## 👥 Integrantes
-Braian Martínez: desarrollo principal y edición de código, revisión.
-Mateo Peralta: documentación tecnica, correcciones y optimización del sistema.
+- Alta y actualización de países en `data/paises.csv`.
+- Búsqueda por nombre y filtros por continente, población y superficie.
+- Ordenamiento por nombre, población y superficie.
+- Estadísticas calculadas a partir de los registros.
+- Validaciones para evitar nombres numéricos y valores de población o superficie no positivos.
+- Normalización de entradas de texto con distintas mayúsculas, tildes y separadores numéricos.
 
----
+El menú permite navegar entre estas funciones sin modificar manualmente el CSV.
 
-## 📝 Descripción del Proyecto
-Este sistema es una aplicación de consola desarrollada en **Python 3.x** diseñada para la administración, filtrado y análisis estadístico de un dataset de países. El software fue migrado exitosamente de un script único hacia una **arquitectura modular de 7 componentes**, aplicando los principios de responsabilidad única y persistencia de datos mediante archivos **CSV**.
+## Estructura
 
-### 🛡️ Ingeniería de Robustez e Integridad (QA)
-El sistema cuenta con un blindaje contra errores lógicos habituales de carga:
-* **Sanitización de Puntos:** Permite ingresar números con puntos de miles (ej: `46.285.124` o `2.700.000`) en altas, actualizaciones y filtros numéricos, limpiándolos elásticamente para evitar caídas del sistema (`ValueError`).
-* **Flexibilidad de Caracteres:** El motor de búsqueda y alta de continentes normaliza las entradas. Podés escribir `america del sur`, `ÁFRICA` o `Europa` con o sin tildes/mayúsculas, y el sistema lo procesará de manera correcta y estética.
-* **Validaciones de Entrada:** Restringe nombres puramente numéricos y asegura que la población y superficie sean variables estrictamente mayores a cero ($>0$).
+```text
+src/main.py            Menú principal y navegación
+src/datos.py           Lectura, escritura y visualización CSV
+src/validaciones.py    Alta, actualización y validaciones
+src/busqueda.py        Consultas por nombre
+src/filtros.py         Filtros por continente, población y superficie
+src/ordenamiento.py    Ordenamientos
+src/estadisticas.py    Cálculos estadísticos
+data/paises.csv        Dataset utilizado
+INFORME_TPI.pdf        Informe técnico del integrador
+```
 
----
+## Ejecución
 
-## 📦 Estructura Modular del Código (`src/`)
-La lógica del negocio se encuentra distribuida estratégicamente en los siguientes archivos:
-* `main.py`: Orquestador central del menú de opciones y ciclo de vida de la app.
-* `datos.py`: Gestión de operaciones de lectura/escritura (I/O) en `paises.csv` y renderizado de tablas.
-* `validaciones.py`: Controladores de mutación segura de datos (Altas y Actualizaciones).
-* `busqueda.py`: Algoritmos de exploración y coincidencia parcial por nombre.
-* `filtros.py`: Rutinas de extracción sectorizada por continente y rangos cuantitativos.
-* `ordenamiento.py`: Clasificación posicional (Ascendente / Descendente) mediante claves lambda.
-* `estadisticas.py`: Análisis matemático y cálculo de métricas agregadas del dataset.
-
----
-
-## 🚀 Instrucciones de Instalación y Ejecución
-
-### Requisitos Previos
-* Tener instalado **Python 3.10** o superior.
-* Disponer del archivo `data/paises.csv` incluido en el repositorio.
-
-### Ejecución del Sistema
-Para garantizar que Python reconozca el paquete modular de manera interna sin conflictos de importación circular, la aplicación debe ejecutarse desde la **carpeta raíz del proyecto** abriendo una terminal y corriendo el siguiente comando:
+Utilicé **Python 3** y una estructura de módulos con importaciones desde `src`. Para ejecutarlo desde la raíz:
 
 ```bash
 python -m src.main
 ```
----
-## 💡Ejemplos Prácticos de Uso
 
-1. Agregar un País (Tolerante a minúsculas/tildes)
-Entrada en Consola:
+## Ejemplo de uso
 
-Nombre: Peru
-Continente: america del sur
-Población: 34.000.000
-Superficie (km²): 1.285.216
-Resultado: El sistema valida los datos de forma limpia, remueve los puntos internamente y registra de forma estética en el CSV: Peru,América Del Sur,34000000,1285216.
+Registré países desde el menú usando entradas como `Peru`, `america del sur` y `34.000.000` habitantes. El sistema interpreta el formato numérico, normaliza el texto y guarda los datos en el archivo CSV.
 
----
-## 📎Link.
+## Autoría y contexto
 
-Video explicativo y demostrativo del código.
-You tube: https://youtu.be/qe8kJ0Rlx-E
+Realicé este trabajo integrador de Programación I (UTN) junto con **Mateo Peralta**. Mi participación incluyó desarrollo principal, edición de código y revisión; Mateo colaboró con la documentación técnica, correcciones y optimización. Mantengo esa atribución porque el proyecto fue colaborativo.
+
+[Video de explicación y demostración](https://youtu.be/qe8kJ0Rlx-E)
